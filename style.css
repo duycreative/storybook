@@ -1,0 +1,94 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e0e0;
+    font-family: 'Georgia', serif;
+}
+
+.book {
+    width: 90vw;
+    height: 80vh;
+    max-width: 1000px;
+    max-height: 700px;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 2500px;
+    transition: transform 0.5s;
+}
+
+.page {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform-origin: left center;
+    transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.page.flipped {
+    transform: rotateY(-180deg);
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    background-color: #fdfaf6;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.front {
+    border-left: 1px solid #e0e0e0;
+}
+
+.back {
+    transform: rotateY(180deg);
+    border-right: 1px solid #e0e0e0;
+}
+
+.front-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #5a4a42;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    backface-visibility: hidden;
+}
+
+.page-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.page-content img {
+    max-width: 90%;
+    max-height: 80%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.page-content p {
+    font-size: 1.3em;
+    line-height: 1.7;
+}
